@@ -2,6 +2,7 @@ package com.tecsup.controller;
 
 import com.tecsup.model.entities.Curso;
 import com.tecsup.services.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,7 @@ public class CursoController {
         return "listView";
     }
 
+    @RequestMapping(value = "/formView", method = RequestMethod.GET)
     public String crear(Model model) {
         Curso curso = new Curso();  // Crear un nuevo objeto Curso
         model.addAttribute("curso", curso);
@@ -38,7 +40,8 @@ public class CursoController {
         return "formView";  // vista para el formulario
     }
 
-    public String guardar(Curso curso, BindingResult result, Model model) {
+    @RequestMapping(value = "/guardar", method = RequestMethod.POST)
+    public String guardar(@Valid Curso curso, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Formulario de Curso");
             return "formView";  // Regresa al formulario en caso de error

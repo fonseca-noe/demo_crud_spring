@@ -72,7 +72,7 @@
             <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
         </ul>
     </div>
-    <form th:action="@{/form}" th:object="${curso}" method="post">
+    <form th:action="@{/guardar}" th:object="${curso}" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
