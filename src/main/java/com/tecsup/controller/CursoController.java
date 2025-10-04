@@ -17,6 +17,12 @@ public class CursoController {
     @Autowired
     private CursoService servicio;
 
+    // Redirige la raíz (/) a /listar
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String root() {
+        return "redirect:/listar";
+    }
+
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String listar(Model model) {
         model.addAttribute("titulo","Listado de cursos");
